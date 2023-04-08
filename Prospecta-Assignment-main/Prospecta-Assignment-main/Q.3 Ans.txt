@@ -1,0 +1,11 @@
+3)	Question: what are the key things you would consider when creating/consuming an API to ensure that it is secure and reliable?
+
+Ans: Useing Spring-Security, 
+		Handling Exception 
+		Validate input.
+		Inventory and manage your APIs.
+		Use a strong authentication and authorization solution
+		Practice the principle of least privilege.
+		Don't expose more data than necessary.
+		
+		and see also category camel case when gate category base data this type when create application then  my application is also secure and reliable.

@@ -1,0 +1,110 @@
+Q2:-- Theoretical Challenge-:
+
+a> 1.	How will you tackle the challenge above?
+ Ans:-  First of take input using bufferReadder mathod and  change this String to String array using split(",") 
+	and tak one map class and start one for loop and run String Array each Elemeent and put in map class
+when we are put in map class one elem then it also check this elem or single are not if single then put simanytuly using put method or 
+when this value is start '=' sign then chek who's sign avel and also convert all value in integer and solve this all value using paresnting sign in element
+and after convrting all elem in number then put this value in map using .put method..
+
+And also we are use CSVReader reader = new CSVReader(new FileReader("data1.csv") ,'\''); method and convert all file in CSV and change all proparty.. 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+b> 2.	What type of errors you would you check for?
+Ans:-  When take Input in bufferReadr then also thro IoException and when check sign then one type errer also occur and Handle this error using try-catch.
+
+c> 3.	How might a user break your code?
+Ans :-  Some Reason when user break code-
+	1.Code does not report Error.
+	2. Code islate too Long.
+	3. code untested.
+	
+	
+
+this is my saluation......
+
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+class Main {
+	public static void main(String args[]) throws IOException {
+
+		BufferedReader bi = new BufferedReader(new InputStreamReader(System.in));
+
+		String[] strNums = bi.readLine().split(",");
+
+		Map<String, Integer> map = new HashMap<>();
+
+		for (String s : strNums) {
+			String key = s.substring(1, 3);
+//	        		System.out.println(s);
+
+			if (s.charAt(5) == '=') {
+
+				String subStr = s.substring(6, s.length());
+				
+				char[] stringArray = subStr.toCharArray();
+				String[] split = new String[2];
+				String ax="";
+				int px=0;
+				
+				for(char c:stringArray) {
+					if(c=='+') {
+						split[px++]=ax;
+						ax="";
+					}else {
+						ax+=c;
+					}
+				}
+				
+				
+
+				int x1 = 0;
+				if (Character.isDigit(split[0].charAt(0))) {
+					x1 = Integer.parseInt(split[0]);
+				} else {
+
+					try {
+						x1 = map.get(split[0]);
+
+					} catch (Exception e) {
+						System.out.println("Key Not Found..");
+					}
+
+				}
+				
+				
+				
+				int x2 = 0;
+				if (Character.isDigit(split[1].charAt(0))) {
+					System.out.println(split[1]);
+					x1 = Integer.parseInt(split[1]);
+				} else {
+
+					try {
+						x2 = map.get(split[1]);
+
+					} catch (Exception e) {
+						System.out.println("Key Not Found..");
+					}
+
+				}
+				
+				int mx = x1+x2;
+				map.put(key, mx);
+
+			} else {
+				map.put(key, 0);
+			}
+
+		}
+		
+		System.out.println(map);
+
+	}
+}
